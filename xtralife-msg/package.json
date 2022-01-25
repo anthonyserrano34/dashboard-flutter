@@ -1,0 +1,35 @@
+{
+  "name": "xtralife-msg",
+  "description": "Xtralife-msg is a distributed message bus",
+  "version": "4.0.0",
+  "author": "devteam <devteam@xtralife.cloud>",
+  "license": "(C) Xtralife.cloud, 2020",
+  "engines": {
+    "node": ">=v10.18.1"
+  },
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xtralifecloud/xtralife-msg.git"
+  },
+  "dependencies": {
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "*",
+    "bluebird": "*",
+    "mocha": "*",
+    "redis": "*",
+    "should": "*",
+    "winston": "*"
+  },
+  "peerDependencies": {
+    "bluebird": "*",
+    "redis": "*",
+    "winston": "*"
+  },
+  "readmeFilename": "Readme.md",
+  "scripts": {
+    "test": "mocha test/*.js"
+  }
+}

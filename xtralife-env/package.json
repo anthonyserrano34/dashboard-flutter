@@ -1,0 +1,38 @@
+{
+  "name": "xtralife-env",
+  "version": "4.0.0",
+  "description": "Dependency injection for node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "keywords": [
+    "configuration",
+    "environment",
+    "DI",
+    "IOC"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xtralifecloud/xtralife-env.git"
+  },
+  "author": "chris <chris@xtralife.cloud>",
+  "license": "(C) Xtralife.cloud, 2015",
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "async": "^3.2.1",
+    "extend": "^3.0.2"
+  },
+  "peerDependencies": {
+    "bluebird": "*",
+    "winston": "*"
+  },
+  "devDependencies": {
+    "bluebird": "^3.7.2",
+    "mocha": "^9.1.1",
+    "should": "^13.2.3",
+    "winston": "^3.3.3"
+  }
+}

@@ -1,0 +1,54 @@
+{
+    "name": "xtralife-api",
+    "version": "4.0.0",
+    "description": "Xtralife.cloud business logic shared between components",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "mocha test/test_*.js"
+    },
+    "keywords": [
+        "backend",
+        "game"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xtralifecloud/xtralife-api.git"
+    },
+    "author": "devteam <devteam@xtralife.cloud>",
+    "license": "(C) Xtralife.cloud, 2020",
+    "engines": {
+        "node": ">=v10.18.1"
+    },
+    "dependencies": {
+        "apn": "^2.2.0",
+        "async": "^3.2.1",
+        "aws-sdk": "^2.998.0",
+        "bluebird": "^3.7.2",
+        "check-types": "^11.1.2",
+        "dtimer": "^0.3.3",
+        "elasticsearch": "^12.1.3",
+        "fbgraph": "^1.4.4",
+        "flat": "^5.0.2",
+        "iap": "^1.1.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^4.1.2",
+        "node-gcm": "^1.0.5",
+        "nodemailer": "^6.6.5",
+        "prom-client": "^12.0.0",
+        "randomstring": "^1.2.1",
+        "redlock": "^4.2.0",
+        "request": "^2.88.2",
+        "superagent": "^6.1.0",
+        "underscore": "^1.13.1",
+        "underscore-contrib": "^0.3.0",
+        "winston": "^3.3.3",
+        "xtralife-msg": "file:../xtralife-msg"
+    },
+    "devDependencies": {
+        "mocha": "^9.1.2",
+        "redis": "^3.1.2",
+        "should": "^13.2.3",
+        "xtralife-env": "file:../xtralife-env"
+    },
+    "readmeFilename": "readme.md"
+}
