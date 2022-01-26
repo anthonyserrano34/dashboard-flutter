@@ -1,8 +1,7 @@
-import '/helpers/local_navigator.dart';
+import 'package:dashboard/hooks/useSession.dart';
 
-import '../../controllers/menu_controller.dart';
+import '/helpers/local_navigator.dart';
 import '/responsive.dart';
-import '/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'components/side_menu.dart';
@@ -10,6 +9,7 @@ import 'components/side_menu.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    checkLoggedin();
     return Scaffold(
       drawer: SideMenu(),
       body: SafeArea(

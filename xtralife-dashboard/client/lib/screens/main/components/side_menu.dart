@@ -1,8 +1,8 @@
+import '/hooks/useSession.dart';
 import '/controllers/controllers.dart';
 import '/routing/routes.dart';
 import '/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -42,6 +42,13 @@ class SideMenu extends StatelessWidget {
             icon: Icons.manage_accounts_outlined,
             press: () {
               navigationController.navigateTo(UsersPageRoute);
+            },
+          ),
+          DrawerListTile(
+            title: "Logout",
+            icon: Icons.exit_to_app,
+            press: () async {
+              await logout();
             },
           ),
         ],

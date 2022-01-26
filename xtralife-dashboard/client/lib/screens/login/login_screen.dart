@@ -1,12 +1,18 @@
+import 'package:dashboard/hooks/useSession.dart';
+
 import '/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../constants.dart';
 
+final TextEditingController _usernameController = TextEditingController();
+final TextEditingController _passwordController = TextEditingController();
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    checkLoggedin();
     return Scaffold(
       backgroundColor: secondaryColor,
       body: Center(
@@ -48,6 +54,7 @@ class LoginScreen extends StatelessWidget {
                 height: 15,
               ),
               TextField(
+                controller: _usernameController,
                 decoration: InputDecoration(
                     labelText: "Username",
                     hintText: "Type your username",
@@ -58,6 +65,7 @@ class LoginScreen extends StatelessWidget {
                 height: 15,
               ),
               TextField(
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     labelText: "Password",
@@ -74,11 +82,10 @@ class LoginScreen extends StatelessWidget {
                 height: 15,
               ),
               InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),
-                  );
+                onTap: () async {
+                  var username = _usernameController.text;
+                  var password = _passwordController.text;
+                  await login(username, password);
                 },
                 child: Container(
                   decoration: BoxDecoration(
