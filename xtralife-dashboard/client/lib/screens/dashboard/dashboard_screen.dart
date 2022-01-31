@@ -1,3 +1,9 @@
+import 'package:dashboard/components/GameAndDomainSelector.dart';
+import 'package:dashboard/controllers/controllers.dart';
+import 'package:dashboard/helpers/local_navigator.dart';
+import 'package:dashboard/routing/router.dart';
+import 'package:dashboard/routing/routes.dart';
+
 import '/responsive.dart';
 import '/screens/dashboard/components/my_fields.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
         padding: EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-            Header(),
+            GameAndDomainSelector(),
             SizedBox(height: defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

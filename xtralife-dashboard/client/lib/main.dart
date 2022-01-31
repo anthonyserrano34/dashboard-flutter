@@ -16,6 +16,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var username = prefs.getString('username');
+  username = "user";
   Get.put(MenuController());
   Get.put(NavigationController());
   runApp(GetMaterialApp(

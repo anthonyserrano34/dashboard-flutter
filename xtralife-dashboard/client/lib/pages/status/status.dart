@@ -1,17 +1,14 @@
+import 'package:dashboard/screens/dashboard/components/my_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-var username;
-
-void getUsername() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  username = prefs.getString('username');
-}
 
 class StatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    getUsername();
-    return Center(child: Text("Status, hello ${username}"));
+    return Container(
+        child: Center(
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Center(child: Text("cc")),
+      Center(child: Text("cc"))
+    ])));
   }
 }

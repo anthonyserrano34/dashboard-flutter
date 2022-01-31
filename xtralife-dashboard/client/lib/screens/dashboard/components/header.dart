@@ -14,8 +14,8 @@ class Header extends StatelessWidget {
       children: [
         Spacer(flex: 1),
         Expanded(child: GameSelection()),
+        Expanded(child: GameSelection()),
         Spacer(flex: 1),
-        ProfileCard()
       ],
     ));
   }
