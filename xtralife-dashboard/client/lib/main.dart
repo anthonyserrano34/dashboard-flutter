@@ -31,6 +31,6 @@ Future<void> main() async {
       scaffoldBackgroundColor: bgColor,
       canvasColor: secondaryColor,
     ),
-    home: (username == null ? LoginScreen() : MainScreen()),
+    home: (username == null ? MainScreen() : LoginScreen()),
   ));
 }

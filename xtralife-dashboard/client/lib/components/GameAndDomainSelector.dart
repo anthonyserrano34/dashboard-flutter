@@ -1,5 +1,7 @@
-import '/responsive.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants.dart';
 
 class GameAndDomainSelector extends StatelessWidget {
@@ -11,15 +13,21 @@ class GameAndDomainSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Spacer(flex: 1),
+        Text("Game :"),
+        SizedBox(
+          width: 30,
+        ),
         GameSelector(),
         SizedBox(
-          //Use of SizedBox
+          width: 30,
+        ),
+        Text("Domain :"),
+        SizedBox(
           width: 30,
         ),
         DomainSelector(),
-        Spacer(flex: 1),
       ],
     ));
   }
@@ -33,33 +41,49 @@ class GameSelector extends StatefulWidget {
 }
 
 class _GameSelectorState extends State<GameSelector> {
-  String gameSelected =
-      'com.xtralife.cloud';
+  String gameSelected = 'Select a game';
+
+  List data = [];
+
+  Future<String> getSWData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? game1 = prefs.getString('game');
+    var resBody = json.decode(game1!);
+
+    setState(() {
+      data = resBody;
+    });
+
+    print(resBody);
+
+    return "ok";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.getSWData();
+  }
 
   @override
   Widget build(BuildContext context) {
+    print(gameSelected);
     return DropdownButton<String>(
       value: gameSelected,
       style: const TextStyle(color: primaryColor),
-      underline: Container(
-        height: 2,
-        color: primaryColor,
-      ),
-      onChanged: (String? newValue) {
-        setState(() {
-          gameSelected = newValue!;
-        });
-      },
-      items: <String>[
-        'com.xtralife.cloud',
-        'game2',
-        'game3'
-      ].map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
+      items: data.map((item) {
+        return new DropdownMenuItem(
+          child: new Text(item['name']),
+          value: item.toString(),
         );
       }).toList(),
+      onChanged: (newGame) {
+        setState(() {
+          gameSelected = newGame!;
+        });
+        print(newGame);
+        print(gameSelected);
+      },
     );
   }
 }
@@ -78,12 +102,7 @@ class _DomainSelectorState extends State<DomainSelector> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       value: domainSelected,
-      elevation: 16,
       style: const TextStyle(color: primaryColor),
-      underline: Container(
-        height: 2,
-        color: primaryColor,
-      ),
       onChanged: (String? newValue) {
         setState(() {
           domainSelected = newValue!;
