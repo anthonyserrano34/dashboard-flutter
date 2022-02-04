@@ -144,7 +144,7 @@ const app = express();
 const ready = Q.defer();
 
 if (env != "production") {
-    app.use(cors({ origin: "http://localhost:8080" }))
+    app.use(cors())
 }
 
 // all environments

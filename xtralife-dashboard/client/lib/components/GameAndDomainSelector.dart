@@ -41,9 +41,7 @@ class GameSelector extends StatefulWidget {
 }
 
 class _GameSelectorState extends State<GameSelector> {
-  String gameSelected = 'Select a game';
-
-  List data = [];
+  static List data = [];
 
   Future<String> getSWData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -59,6 +57,7 @@ class _GameSelectorState extends State<GameSelector> {
     return "ok";
   }
 
+  static String gameSelected = data[0].toString();
   @override
   void initState() {
     super.initState();
@@ -67,13 +66,13 @@ class _GameSelectorState extends State<GameSelector> {
 
   @override
   Widget build(BuildContext context) {
-    print(gameSelected);
     return DropdownButton<String>(
       value: gameSelected,
+      icon: const Icon(Icons.keyboard_arrow_down),
       style: const TextStyle(color: primaryColor),
       items: data.map((item) {
-        return new DropdownMenuItem(
-          child: new Text(item['name']),
+        return DropdownMenuItem(
+          child: Text(item['name']),
           value: item.toString(),
         );
       }).toList(),
@@ -81,7 +80,6 @@ class _GameSelectorState extends State<GameSelector> {
         setState(() {
           gameSelected = newGame!;
         });
-        print(newGame);
         print(gameSelected);
       },
     );
@@ -97,24 +95,38 @@ class DomainSelector extends StatefulWidget {
 
 class _DomainSelectorState extends State<DomainSelector> {
   String domainSelected = 'private';
+  String dropdownvalue = 'Item 1';
+  var items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: domainSelected,
-      style: const TextStyle(color: primaryColor),
-      onChanged: (String? newValue) {
-        setState(() {
-          domainSelected = newValue!;
-        });
-      },
-      items: <String>['private', 'domain2', 'domain3']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
+      // Initial Value
+      value: dropdownvalue,
+
+      // Down Arrow Icon
+      icon: const Icon(Icons.keyboard_arrow_down),
+
+      // Array list of items
+      items: items.map((String items) {
+        return DropdownMenuItem(
+          value: items,
+          child: Text(items),
         );
       }).toList(),
+      // After selecting the desired option,it will
+      // change button value to selected value
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownvalue = newValue!;
+        });
+      },
     );
   }
 }

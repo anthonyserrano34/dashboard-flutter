@@ -3,6 +3,7 @@ import '/controllers/controllers.dart';
 import '/routing/routes.dart';
 import '/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -25,7 +26,7 @@ class SideMenu extends StatelessWidget {
           ),
           DrawerListTile(
             title: "Status",
-            icon: Icons.dashboard_outlined,
+            icon: Icons.signal_wifi_statusbar_connected_no_internet_4,
             press: () {
               navigationController.navigateTo(StatusPageRoute);
             },
@@ -45,6 +46,27 @@ class SideMenu extends StatelessWidget {
             },
           ),
           DrawerListTile(
+            title: "Leaderboards",
+            icon: Icons.leaderboard,
+            press: () {
+              navigationController.navigateTo(UsersPageRoute);
+            },
+          ),
+          DrawerListTile(
+            title: "SDK",
+            icon: Icons.widgets,
+            press: () {
+              _gotoSDK();
+            },
+          ),
+          DrawerListTile(
+            title: "Blog",
+            icon: Icons.rss_feed,
+            press: () {
+              _gotoBlog();
+            },
+          ),
+          DrawerListTile(
             title: "Logout",
             icon: Icons.exit_to_app,
             press: () async {
@@ -54,6 +76,24 @@ class SideMenu extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+void _gotoSDK() async {
+  const url = 'https://github.com/xtralifecloud/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+void _gotoBlog() async {
+  const url = 'https://xtralife.cloud/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
 

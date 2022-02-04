@@ -1,12 +1,12 @@
-class AppContext {
+class UserDetails {
   String? email;
   String? password;
   List<Games>? games;
   String? name;
 
-  AppContext({this.email, this.password, this.games, this.name});
+  UserDetails({this.email, this.password, this.games, this.name});
 
-  AppContext.fromJson(Map<String, dynamic> json) {
+  UserDetails.fromJson(Map<String, dynamic> json) {
     email = json['email'];
     password = json['password'];
     if (json['games'] != null) {

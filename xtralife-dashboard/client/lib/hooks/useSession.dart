@@ -9,7 +9,7 @@ Future<String?> login(String username, String password) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   print("Attempting to login");
   final data = jsonEncode({'username': username, 'password': password});
-  var url = Uri.parse("/login");
+  var url = Uri.parse("http://127.0.0.1:3000/login");
   http.post(url,
       body: data,
       headers: {"Content-Type": "application/json"}).then((res) async {
@@ -31,9 +31,8 @@ Future<String?> login(String username, String password) async {
       );
       print("username = ${username}");
       prefs.setString('username', username);
-
       Get.toNamed("/dashboard");
-      AppContext userDetails = AppContext.fromJson(jsonDecode(res.body));
+      UserDetails userDetails = UserDetails.fromJson(jsonDecode(res.body));
       prefs.setString('game', jsonEncode(userDetails.games));
       String? game1 = prefs.getString('game');
       print("game1 ${game1}");
