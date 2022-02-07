@@ -18,6 +18,8 @@ class UserDetails {
     name = json['name'];
   }
 
+  Object? get domains => null;
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['email'] = this.email;
