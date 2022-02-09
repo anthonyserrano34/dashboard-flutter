@@ -8,6 +8,8 @@ export const getGameStorage = async(game, domain) => {
         if (res.status === 200 && res.data === "") {
             return [];
         }
+        console.log(`Game : ${game}`);
+        console.log(`Domain : ${domain}`);
         return res.data;
     } catch (err) {
         toast.error("Error while loading storage. See console for more details")

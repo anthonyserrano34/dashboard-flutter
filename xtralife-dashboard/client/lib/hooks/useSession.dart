@@ -38,6 +38,7 @@ Future<String?> login(String username, String password) async {
       print("game1 ${game1![0]}");
       print("setUser : ${userDetails}");
       String? test = jsonEncode(userDetails.games![1]);
+      print("test = ${test}");
       Map test2 = jsonDecode(test);
       print("setGame : ${test2['domains']}");
       print("setDomain : ${userDetails.games![0].domains![0]}");
