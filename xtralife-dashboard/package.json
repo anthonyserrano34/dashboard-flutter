@@ -25,6 +25,7 @@
         "async": "^3.2.1",
         "bluebird": "^3.7.2",
         "body-parser": "^1.19.0",
+        "browserify": "^17.0.0",
         "connect-redis": "^6.0.0",
         "cors": "^2.8.5",
         "cron": "^1.8.2",

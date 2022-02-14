@@ -1,5 +1,8 @@
 import 'package:dashboard/constants.dart';
+import 'package:dashboard/providers/domain_provider.dart';
+import 'package:dashboard/providers/game_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class StatusPage extends StatelessWidget {
   @override
@@ -48,7 +51,7 @@ class StatusPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 15.0),
                               child: Text(
-                                  "Your game is not using Key/Value storage in domain private"),
+                                  "Your game is not using Key/Value storage in domain ${context.watch<Domain>().domain}"),
                             ),
                           ])),
                       Spacer(),

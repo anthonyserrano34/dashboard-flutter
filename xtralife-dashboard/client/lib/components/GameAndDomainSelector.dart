@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'package:dashboard/providers/domain_provider.dart';
+import 'package:dashboard/providers/game_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants.dart';
+import 'package:provider/provider.dart';
 
 class GameAndDomainSelector extends StatefulWidget {
   const GameAndDomainSelector({Key? key}) : super(key: key);
@@ -24,6 +27,8 @@ class _GameAndSelectorState extends State<GameAndDomainSelector> {
       gameSelected = games[0];
       domainSelected = gameSelected['domains'][0];
     });
+    context.read<Game>().setGame(gameSelected['name']);
+    context.read<Domain>().setDomain(domainSelected);
   }
 
   @override
@@ -57,6 +62,9 @@ class _GameAndSelectorState extends State<GameAndDomainSelector> {
               domains = gameSelected['domains'];
               domainSelected = domains[0];
             });
+
+            context.read<Game>().setGame(gameSelected['name']);
+            context.read<Domain>().setDomain(domainSelected);
           },
         ),
         SizedBox(
@@ -80,6 +88,7 @@ class _GameAndSelectorState extends State<GameAndDomainSelector> {
             setState(() {
               domainSelected = newDomain!;
             });
+            context.read<Domain>().setDomain(domainSelected);
           },
         ),
       ],
