@@ -2,13 +2,13 @@ import 'package:dashboard/controllers/controllers.dart';
 import 'package:dashboard/hooks/useSession.dart';
 import 'package:dashboard/routing/router.dart';
 import 'package:dashboard/routing/routes.dart';
-import 'package:dashboard/screens/dashboard/dashboard_screen.dart';
+import 'package:dashboard/views/dashboard/dashboard_screen.dart';
 import '/responsive.dart';
 import 'package:flutter/material.dart';
 
 import 'components/side_menu.dart';
 
-class MainScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     checkLoggedin();

@@ -6,9 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'constants.dart';
 import 'controllers/menu_controller.dart';
 import 'controllers/navigation_controller.dart';
-import 'screens/main/main_screen.dart';
+import 'views/main/home.dart';
 import 'package:flutter/material.dart';
-import '/screens/login/login_screen.dart';
+import '/views/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ Future<void> main() async {
       child: GetMaterialApp(
         initialRoute: '/',
         getPages: [
-          GetPage(name: '/dashboard', page: () => MainScreen()),
+          GetPage(name: '/dashboard', page: () => HomeScreen()),
           GetPage(name: '/login', page: () => LoginScreen()),
         ],
         debugShowCheckedModeBanner: false,
@@ -34,6 +34,6 @@ Future<void> main() async {
           scaffoldBackgroundColor: bgColor,
           canvasColor: secondaryColor,
         ),
-        home: (username == null ? MainScreen() : LoginScreen()),
+        home: (username == null ? HomeScreen() : LoginScreen()),
       )));
 }

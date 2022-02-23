@@ -1,12 +1,22 @@
 import 'package:dashboard/constants.dart';
 import 'package:dashboard/providers/domain_provider.dart';
 import 'package:dashboard/providers/game_provider.dart';
+import 'package:dashboard/services/status.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class StatusPage extends StatelessWidget {
+class StatusPage extends StatefulWidget {
   @override
+  State<StatefulWidget> createState() {
+    return new MyAppState();
+  }
+}
+
+class MyAppState extends State<StatusPage> {
+  bool showStorage = false;
   Widget build(BuildContext context) {
+    getGameStorage(context.watch<Game>().game, context.watch<Domain>().domain);
+
     return Container(
         alignment: Alignment.center,
         child: Column(children: [
@@ -30,7 +40,6 @@ class StatusPage extends StatelessWidget {
             children: <Widget>[
               Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
                     color: secondaryColor,
                   ),
                   height: 90,
@@ -64,21 +73,41 @@ class StatusPage extends StatelessWidget {
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      InkWell(
+                                        onTap: () {
+                                          if (showStorage == true) {
+                                            setState(() {
+                                              showStorage = false;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              showStorage = true;
+                                            });
+                                          }
+                                        },
+                                        child: Container(
+                                            color: Colors.black38,
+                                            width: 120,
+                                            height: 50,
+                                            child: Center(child: Text("Edit"))),
+                                      ),
+                                      SizedBox(width: 10),
                                       Container(
-                                          color: Colors.black38,
+                                          color: Colors.blue,
                                           width: 120,
                                           height: 50,
-                                          child: Center(child: Text("Edit"))),
+                                          child: Center(child: Text("Export"))),
                                       SizedBox(width: 10),
                                       Container(
                                           color: Colors.green,
                                           width: 120,
                                           height: 50,
-                                          child: Center(child: Text("Import")))
+                                          child: Center(child: Text("Import"))),
                                     ])),
                           ))
                     ],
                   )),
+              showStorage ? Storage() : SizedBox(),
               SizedBox(height: 100),
               Container(
                   decoration: BoxDecoration(
@@ -139,6 +168,37 @@ class StatusPage extends StatelessWidget {
                   ))
             ],
           )))
+        ]));
+  }
+
+  Widget Storage() {
+    return Container(
+        decoration: BoxDecoration(
+          color: thirdColor,
+        ),
+        height: 150,
+        width: 1000,
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            width: 850,
+            height: 52,
+            child: TextField(
+              style: TextStyle(color: secondaryColor),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                fillColor: Colors.white,
+                filled: true,
+                hintText: "Enter Key Name and press 'Add new key'",
+                hintStyle: TextStyle(color: Colors.grey),
+              ),
+            ),
+          ),
+          SizedBox(width: 5),
+          Container(
+              color: Colors.green,
+              width: 120,
+              height: 50,
+              child: Center(child: Text("+ Add new key")))
         ]));
   }
 }

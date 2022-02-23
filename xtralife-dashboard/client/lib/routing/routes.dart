@@ -1,13 +1,13 @@
 const StatusPageRoute = "Status";
 const StorePageRoute = "Store";
 const UsersPageRoute = "Users";
-const LoginPageRoute = "Login";
+const LeaderboardPageRoute = "Leaderboards";
 const MainPageRoute = "Home";
 
 List sideMenuItems = [
   StatusPageRoute,
   StorePageRoute,
   UsersPageRoute,
-  LoginPageRoute,
   MainPageRoute,
+  LeaderboardPageRoute,
 ];

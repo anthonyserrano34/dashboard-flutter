@@ -27,8 +27,6 @@ class MenuController extends GetxController {
         return _customIcon(Icons.trending_down, itemName);
       case UsersPageRoute:
         return _customIcon(Icons.trending_up, itemName);
-      case LoginPageRoute:
-        return _customIcon(Icons.exit_to_app, itemName);
       default:
         return _customIcon(Icons.exit_to_app, itemName);
     }

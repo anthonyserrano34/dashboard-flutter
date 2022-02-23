@@ -49,7 +49,7 @@ class SideMenu extends StatelessWidget {
             title: "Leaderboards",
             icon: Icons.leaderboard,
             press: () {
-              navigationController.navigateTo(UsersPageRoute);
+              navigationController.navigateTo(LeaderboardPageRoute);
             },
           ),
           DrawerListTile(
